@@ -1,0 +1,69 @@
+@import "./styles.scss";
+
+@include scrollbars;
+
+.menu {
+  display: none;
+
+  @include min-media(tablet) {
+    display: flex;
+    justify-content: center;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    font-family: "NB International Mono", monospace;
+    position: fixed;
+    right: 0;
+    height: auto;
+    width: 100%;
+    z-index: 2;
+    transition: transform 1s ease-in-out;
+  }
+
+  a {
+    margin: 0.1rem 1.2rem;
+    user-select: none;
+    color: inherit;
+    position: relative;
+    text-decoration: none;
+  }
+
+  a::before {
+    content: "";
+    position: absolute;
+    left: -1.5em;
+    right: -1.5em;
+    top: -0.5em;
+    bottom: -0.5em;
+  }
+
+  a::after {
+    background-color: black;
+    bottom: -0.2em;
+    content: "";
+    display: inline-block;
+    height: 0.18ex;
+    left: 0;
+    position: absolute;
+    -webkit-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 100% 0;
+    -ms-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transition: -webkit-transform 0.125s 0.125s ease-out;
+    transition: -webkit-transform 0.125s 0.125s ease-out;
+    transition: transform 0.125s 0.125s ease-out;
+    transition: transform 0.125s 0.125s ease-out,
+      -webkit-transform 0.125s 0.125s ease-out;
+    width: 100%;
+  }
+
+  a:hover:after {
+    transform: scaleX(1);
+  }
+
+  a.selectedLink:after {
+    text-decoration: underline;
+    transform: scaleX(1);
+  }
+}

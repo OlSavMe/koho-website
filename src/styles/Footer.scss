@@ -1,0 +1,66 @@
+@import "./styles.scss";
+
+@include scrollbars;
+
+footer {
+  width: 100vw;
+  height: auto;
+  background-color: #e5e5e5;
+
+  .footer-container {
+    width: 90%;
+    max-width: 1560px;
+    margin: 0 auto;
+    padding: 50px 0;
+
+    .footer-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include min-media(mobile) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .footer-column {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        padding: 0;
+        margin: 2rem;
+
+        @include min-media(tablet) {
+          width: 20%;
+        }
+
+        li {
+          margin-bottom: 0.8rem;
+        }
+
+        .some {
+          display: flex;
+          list-style: none;
+          padding: 0;
+          li {
+            margin-right: 2rem;
+            img {
+              height: 2rem;
+            }
+          }
+        }
+      }
+    }
+    .footer-copyright {
+      display: flex;
+      justify-self: start;
+
+      .footer-column {
+        list-style: none;
+        padding: 0;
+        margin: 2rem;
+        width: 100%;
+      }
+    }
+  }
+}

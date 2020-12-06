@@ -1,0 +1,53 @@
+@mixin scrollbars {
+  // Chrome, Edge, Opera, Safari, iOS
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+}
+
+@mixin user-select-disabled {
+  user-select: none;
+  /* Mozilla*/
+  -moz-user-select: none; /* Mozilla */
+  -webkit-user-select: none; /* WebKit */
+  -ms-user-select: none; /* Microsoft */
+}
+
+@mixin basic-button-style {
+  display: inline-block;
+  border: none;
+  margin: 0;
+  text-decoration: none;
+  font-family: "Source Sans Pro", sans-serif;
+  cursor: pointer;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Responsiveness */
+
+$breakpoints: (
+  mobile: 425px,
+  tablet: 769px,
+  laptop: 1024px,
+  laptop-large: 1440px,
+  desktop: 1800px,
+);
+
+@mixin max-media($keys...) {
+  @each $key in $keys {
+    @media (max-width: map-get($breakpoints, $key)) {
+      @content;
+    }
+  }
+}
+
+@mixin min-media($keys...) {
+  @each $key in $keys {
+    @media (min-width: map-get($breakpoints, $key)) {
+      @content;
+    }
+  }
+}

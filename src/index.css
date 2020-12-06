@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  height: 100%;
+  font-family: "NB International Mono", monospace;
+  letter-spacing: 0.03em;
+  font-weight: 300;
+  background-color: #fbfbfb;
+  scroll-behavior: smooth;
+  animation: fade 1s ease-in-out;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
