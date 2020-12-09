@@ -1,0 +1,52 @@
+@import "./styles.scss";
+
+.menu-mobile {
+  @include min-media(tablet) {
+    display: none;
+  }
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: #cfcfcf;
+  //   justify-content: center;
+  padding-top: 4rem;
+  transform: translateX(+10%);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  margin-top: 56.59px;
+  top: 0;
+  left: 0;
+  transition: transform 0.7s ease-out;
+
+  z-index: 101;
+
+  a {
+    color: #cfcfcf;
+    font-size: 1.5rem;
+    margin: 1.3rem 2rem;
+    background: transparent;
+    letter-spacing: 0.5rem;
+    text-decoration: none;
+    transition: color 0.3s linear;
+  }
+  .selectedLink {
+    border-bottom: 1px solid #cfcfcf;
+  }
+  &.closed {
+    transform: translateX(+100%);
+  }
+
+  .menu-footer {
+    position: absolute;
+    font-size: 1rem;
+    line-height: 1rem;
+    bottom: 6rem;
+    left: 2rem;
+    // margin: 5rem 0 0 1.5rem;
+
+    p {
+      color: #cfcfcf;
+    }
+  }
+}

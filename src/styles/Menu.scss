@@ -4,7 +4,6 @@
 
 .menu {
   display: none;
-
   @include min-media(tablet) {
     display: flex;
     justify-content: center;

@@ -1,16 +1,21 @@
 import React from "react";
 import "../styles/Header.scss";
 import Menu from "./Menu";
+import { Link } from "react-router-dom";
+import LogoBlack from "../assets/new-logo-black.jpeg";
+import MenuIcon from "../components/MenuIcon";
 
-const Header = () => {
+const Header =  ({ open, setOpen }) => {
 
  
   return (
     <nav>
       <div className="header">
-          <h2 className="logo">.koho</h2>
+      <Link className="logo" to="/">
+        <img src={LogoBlack} alt="logo"></img>
+      </Link>
         <Menu />
-        <h1 className="menu-icon">menu</h1>
+     <MenuIcon  open={open} setOpen={setOpen}/>
       </div>
     </nav>
   );

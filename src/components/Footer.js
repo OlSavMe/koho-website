@@ -20,13 +20,13 @@ const Footer = () => {
        <li>Follow me:</li>
        <ul className="some"> 
        <li><a href="https://www.linkedin.com/in/alfonsocon/">
-           <img src="img/linkedin.png" alt="linkedin"/></a></li>
+           <img src="img/in-new.svg" alt="linkedin"/></a></li>
            <li><a href="https://www.linkedin.com/in/alfonsocon/">
-           <img src="img/instagram.png" alt="linkedin"/></a></li>
-           <li><a href="https://www.linkedin.com/in/alfonsocon/">
+           <img src="img/insta-new.svg" alt="linkedin"/></a></li>
+           {/* <li><a href="https://www.linkedin.com/in/alfonsocon/">
            <img src="img/facebook.png" alt="linkedin"/></a></li>
            <li><a href="https://www.linkedin.com/in/alfonsocon/">
-           <img src="img/twitter.png" alt="linkedin"/></a></li>
+           <img src="img/twitter.png" alt="linkedin"/></a></li> */}
        </ul>
        </ul>
        <ul className="footer-column">
