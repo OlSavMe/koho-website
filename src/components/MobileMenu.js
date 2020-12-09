@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/MobileMenu.scss";
 import { NavLink } from "react-router-dom";
-import LogoWhite from "../assets/logowhite.svg";
+
 
 const MobileMenu = ({ open, setOpen }) => {
   const handleClose = (e) => {
@@ -31,7 +31,7 @@ const MobileMenu = ({ open, setOpen }) => {
         </NavLink>
       <NavLinks />
       <div className="menu-footer">
-      <p>kohocreate.com</p>
+      <p>kohocreative.com</p>
       </div>
       </div>
     </>

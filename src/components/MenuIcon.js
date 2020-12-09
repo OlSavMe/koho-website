@@ -1,4 +1,6 @@
 import React from "react";
+import Burger from "../assets/menu.svg";
+import Close from "../assets/close.svg";
 
 const MenuIcon = ({ open, setOpen }) => {
   return (
@@ -6,8 +8,8 @@ const MenuIcon = ({ open, setOpen }) => {
         open={open}
         onClick={() => setOpen(!open)}
       >
-              {!open ? (<h1 className="menu-icon">menu</h1>) :
-             ( <h1 className="menu-icon">close</h1>) }            
+              {!open ? (<img className="menu-icon" src={Burger} alt="burger" />) :
+             (<img className="menu-icon" src={Close} alt="close" />) }            
     
     </div>
   );

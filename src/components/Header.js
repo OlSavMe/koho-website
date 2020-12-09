@@ -12,7 +12,7 @@ const Header =  ({ open, setOpen }) => {
     <nav>
       <div className="header">
       <Link className="logo" to="/">
-        <img src={LogoBlack} alt="logo"></img>
+        <img src={LogoBlack} alt="logo" />
       </Link>
         <Menu />
      <MenuIcon  open={open} setOpen={setOpen}/>
