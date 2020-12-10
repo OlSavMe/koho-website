@@ -39,10 +39,10 @@ const Footer = () => {
 
        <ul className="footer-column">
        <ul className="some"> 
-       <li><a href="https://www.linkedin.com/in/alfonsocon/">
+       <li><a href="https://www.linkedin.com/company/kohocreative/">
            <img src="img/in-new.svg" alt="linkedin"/></a></li>
-           <li><a href="https://www.linkedin.com/in/alfonsocon/">
-           <img src="img/insta-new.svg" alt="linkedin"/></a></li>
+           <li><a href="https://www.instagram.com/kohocreative/">
+           <img src="img/insta-new.svg" alt="instagram"/></a></li>
        </ul>
        </ul>
        <ul className="footer-column">

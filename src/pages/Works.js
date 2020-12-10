@@ -1,151 +1,36 @@
 import React from "react";
 import '../styles/Works.scss';
+import projectData from "../data/ProjectData";
+import {NavLink,  
+    Switch,
+    Route,
+    useRouteMatch} from "react-router-dom";
+    import ProjectPage from "../components/ProjectPage";
 
 function Works() {
+
+    let { url } = useRouteMatch();
+const ProjectCards = () => 
+projectData.map((item, index) => (
+    <NavLink key={index}  to={`/project/${item.id}`} className="wrapper">
+     <img src={item.picture} alt="card-pic"/>
+       <figcaption>{item.title}</figcaption>
+    </NavLink>
+        ));
+
+
   return (
     <>
-   <div className='container'> 
-
-{/* 
-      <div className="caption-wrapper"> 
-      <img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div>
-      <div className="caption-wrapper"> 
-      <img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div>
-      <div className="caption-wrapper"> 
-      <img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div>
-      <div className="caption-wrapper"> 
-      <img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div>
-      <div className="caption-wrapper"> 
-      <img src="img/Event Factory profile picture-04.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div>
-      <div className="caption-wrapper"> 
-      <img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div>
-      <div className="caption-wrapper"> 
-      <img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div>
-      <div className="caption-wrapper"> 
-      <img src="img/Event Factory profile picture-04.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div>
-      <div className="caption-wrapper"> 
-      <img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div>
-      <div className="caption-wrapper"> 
-      <img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div> */}
-
+   <div className='container'>  
  <div className="grid">
-
-<a href="https://www.alejandra.fi/" className="wrapper">
-<img src="img/Event Factory profile picture-04.png" alt="eventfac"/>
-<figcaption>Event Factory</figcaption>
-</a>
-<a href="https://savkaportfolio.firebaseapp.com/" className="wrapper">
-<img src="img/3. SoMe flavours_Chili.png" alt="eventfac"/>
-<figcaption>Chupa</figcaption>
-</a>
-<a href="https://www.alejandra.fi/" className="wrapper">
-<img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-<figcaption>Event Factory</figcaption>
-</a>
-<a href="https://www.alejandra.fi/" className="wrapper">
-<img src="img/3. SoMe flavours_Chili.png" alt="eventfac"/>
-      <figcaption>Chupa</figcaption>
-</a>
-
-<a href="https://www.alejandra.fi/" className="wrapper">
-<img src="img/Event Factory profile picture-04.png" alt="eventfac"/>
-<figcaption>Design Factory</figcaption>
-</a>
-<a href="https://www.alejandra.fi/" className="wrapper">
-<img src="img/3. SoMe flavours_Chili.png" alt="eventfac"/>
-<figcaption>Design Factory</figcaption>
-</a>
-<a href="https://www.alejandra.fi/" className="wrapper">
-<img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-<figcaption>Design Factory</figcaption>
-</a>
-<a href="https://www.alejandra.fi/" className="wrapper">
-<img src="img/3. SoMe flavours_Chili.png" alt="eventfac"/>
-      <figcaption>Design Factory</figcaption>
-</a>
-
-
-
-{/* 
-  <a href='#' className="wrapper">  
-   
-      <img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-<figcaption>Design Factory</figcaption>
-    
- </a>
- <div>  
-   
-      <img src="img/Event Factory profile picture-04.png" alt="eventfac"/>
-      <figcaption>Design Factory</figcaption>
-    
- </div>
- <div>  
-   
-      <img src="img/3. SoMe flavours_Chili.png" alt="eventfac"/>
-      <figcaption>Design Factory</figcaption>
-    
- </div>
- <div>  
-   
-      <img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-      <figcaption>Design Factory</figcaption>
-    
- </div>
- <div>  
-   
-      <img src="img/Design Factory logo3-13.png" alt="eventfac"/>
-      <figcaption>Design Factory</figcaption>
-    
- </div> */}
-
-
- {/* <div>  
-      <div className="caption-wrapper"> 
-      <img src="img/3. SoMe flavours_Chili.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div>
- </div>
-
-
-
- <div>  
-      <div className="caption-wrapper"> 
-      <img src="img/Event Factory profile picture-04.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div>
- </div>
-
- <div>  
-      <div className="caption-wrapper"> 
-      <img src="img/Chipa portfolio SoMe flavours_Clásico.png" alt="eventfac"/>
-<caption>Design Factory</caption>
-      </div>
- </div> */}
-
-  
- 
+     <ProjectCards />
 </div>
    </div>
+   <Switch>
+        <Route path={`${url}/:id`}>
+          <ProjectPage />
+        </Route>
+      </Switch>
     </>
   );
 }

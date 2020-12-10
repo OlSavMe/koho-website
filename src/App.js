@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Footer from './components/Footer';
 import MobileMenu from "./components/MobileMenu";
 import ScrollToTop from "./components/ScrollToTop";
+import ProjectPage from "./components/ProjectPage";
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/" exact component={Works} />
         <Route path="/portfolio" component={About} />
         <Route path="/edu" component={Contact} />
+        <Route path="/project/:id" component={ProjectPage} />
       </Switch>
       <Footer />
   </Router>
