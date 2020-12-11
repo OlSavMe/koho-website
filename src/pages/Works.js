@@ -23,9 +23,17 @@ function Works() {
 
   console.log(entries);
 
+  // Filter blog posts
+  const projectData = [];
+  entries.filter((entry) =>
+    entry.sys.contentType.sys.id === "projectPage"
+      ? projectData.push(entry)
+      : null
+  );
+
   let { url } = useRouteMatch();
   const ProjectCards = () =>
-    entries.map((item, index) => (
+    projectData.map((item, index) => (
       <NavLink
         key={index}
         to={`/project/${item.fields.projectSlug}`}
