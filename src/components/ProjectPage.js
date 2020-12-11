@@ -12,6 +12,12 @@ const client = contentful.createClient({
 const ProjectPage = () => {
   const { id } = useParams();
   const [many, setMany] = useState([]);
+  const [readMore, setReadMore] = useState(false);
+
+  const toggleReadMore = () => {
+    setReadMore(!readMore);
+    //     setHeight(unfold ? "0px" : `${details.current.scrollHeight}px`);
+  };
 
   // Get all entries
   useEffect(() => {
@@ -44,7 +50,19 @@ const ProjectPage = () => {
             <figcaption className="project-caption">
               {item.fields.projectTitle}{" "}
             </figcaption>
-            <p className="text-about"> {item.fields.aboutTheProject}</p>
+
+            <div className="project-texts">
+              <p className="text-about"> {item.fields.aboutTheProject} </p>
+              <p className="text-about">
+                {item.fields.readMore ? (
+                  <strong onClick={toggleReadMore}>Read more</strong>
+                ) : null}
+              </p>
+
+              <p className={readMore ? "read-more" : "read-less"}>
+                {item.fields.readMore}
+              </p>
+            </div>
           </section>
         </div>
       ))}

@@ -28,11 +28,34 @@
         margin: 3rem 2rem 2rem 6rem;
       }
     }
-    .text-about {
+
+    .project-texts {
+      display: flex;
+      flex-direction: column;
       margin: 1rem 3rem;
-      font-size: 18px;
       @include min-media(tablet) {
+        margin: 3rem 6rem;
+      }
+      @include min-media(laptop) {
         margin: 3rem 8rem;
+      }
+
+      .text-about {
+        margin: 1rem 0;
+        font-size: 18px;
+
+        > strong {
+          text-decoration: underline;
+        }
+      }
+      .read-more {
+        display: flex;
+        margin: 1rem 0;
+        font-size: 18px;
+      }
+
+      .read-less {
+        display: none;
       }
     }
   }
