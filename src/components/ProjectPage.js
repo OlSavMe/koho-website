@@ -1,25 +1,53 @@
 import React, { useEffect, useState } from "react";
 import "../styles/ProjectPage.scss";
+import { useParams } from "react-router-dom";
 
-const ProjectPage = ({ props }) => {
-  //   const slug = props.fields.projectSlug;
-  //   const entry_id = props.match.params.sys.environment.id;
+// Contentful delivery API
+const contentful = require("contentful");
+const client = contentful.createClient({
+  space: process.env.REACT_APP_SPACE_ID,
+  accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
+});
+
+const ProjectPage = () => {
+  const { id } = useParams();
+  const [many, setMany] = useState([]);
 
   // Get all entries
-  //   useEffect(() => {
-  //     client
-  //       .getEntry({ entry_id })
-  //       .then((response) => setEntry(response.items))
-  //       .catch(console.error);
-  //   }, [entry_id]);
+  useEffect(() => {
+    client
+      .getEntries()
+      .then((response) => setMany(response.items))
+      .catch(console.error);
+  }, []);
 
-  //   console.log(slug);
+  console.log(many);
+
+  // Filter blog posts
+  const singleData = [];
+  many.filter((single) =>
+    single.sys.id === `${id}` ? singleData.push(single) : null
+  );
+
+  console.log(singleData);
 
   return (
     <div className="project-page">
-      <h1>project</h1>
-      {/* <img src={pic} alt="pic" className="project-pic" /> */}
-      <figcaption></figcaption>
+      {singleData.map((item, i) => (
+        <div className="page-container" key={i}>
+          <img
+            src={item.fields.heroImage.fields.file.url}
+            alt="pic"
+            className="project-pic"
+          />
+          <section className="project-about">
+            <figcaption className="project-caption">
+              {item.fields.projectTitle}{" "}
+            </figcaption>
+            <p className="text-about"> {item.fields.aboutTheProject}</p>
+          </section>
+        </div>
+      ))}
     </div>
   );
 };

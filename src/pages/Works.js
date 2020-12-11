@@ -36,11 +36,7 @@ function Works() {
   let { url } = useRouteMatch();
   const ProjectCards = () =>
     projectData.map((item, index) => (
-      <NavLink
-        key={index}
-        to={`/project/${item.fields.projectSlug}`}
-        className="wrapper"
-      >
+      <NavLink key={index} to={`/project/${item.sys.id}`} className="wrapper">
         <img src={item.fields.heroImage.fields.file.url} alt="card-pic" />
         <figcaption>{item.fields.projectTitle}</figcaption>
       </NavLink>

@@ -7,12 +7,10 @@
   display: flex;
   flex-direction: column;
   list-style: none;
-  padding: 0;
-  margin: 1.5rem 0;
+  padding: 25px;
 
   @include min-media(tablet) {
     width: 20%;
-    margin: 1.5rem 2rem;
   }
 
   li {
