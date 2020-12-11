@@ -3,12 +3,10 @@ import { NavLink } from "react-router-dom";
 import "../styles/Menu.scss";
 
 const Menu = () => {
-
   const linksData = [
     { name: "Works", to: "/" },
     { name: "About", to: "/about" },
     { name: "Contact", to: "/contact" },
- 
   ];
 
   const NavLinks = () =>
