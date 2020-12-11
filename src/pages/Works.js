@@ -3,9 +3,6 @@ import "../styles/Works.scss";
 import { NavLink, Switch, Route, useRouteMatch } from "react-router-dom";
 import ProjectPage from "../components/ProjectPage";
 
-// const API_TOKEN = `${process.env.REACT_APP_CONTENTFUL_TOKEN}`;
-// const SPACE = `${process.env.REACT_APP_SPACE_ID}`;
-
 // Contentful delivery API
 const contentful = require("contentful");
 const client = contentful.createClient({
