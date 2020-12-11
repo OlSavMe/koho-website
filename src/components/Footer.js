@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/Footer.scss";
 import { NavLink } from "react-router-dom";
+import LinkedinImg from "../assets/in-new.svg";
+import InstaImg from "../assets/insta-new.svg";
 
 const Footer = () => {
   const linksData = [
@@ -29,12 +31,12 @@ const Footer = () => {
             <ul className="some">
               <li>
                 <a href="https://www.linkedin.com/company/kohocreative/">
-                  <img src="img/in-new.svg" alt="linkedin" />
+                  <img src={LinkedinImg} alt="linkedin" />
                 </a>
               </li>
               <li>
                 <a href="https://www.instagram.com/kohocreative/">
-                  <img src="img/insta-new.svg" alt="instagram" />
+                  <img src={InstaImg} alt="linkedin" />
                 </a>
               </li>
             </ul>
@@ -55,4 +57,5 @@ const Footer = () => {
     </footer>
   );
 };
+
 export default Footer;

@@ -31,6 +31,8 @@ function Works() {
       : null
   );
 
+  console.log(projectData);
+
   let { url } = useRouteMatch();
   const ProjectCards = () =>
     projectData.map((item, index) => (
