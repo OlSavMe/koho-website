@@ -4,7 +4,6 @@
 
 .project-page {
   margin: 4.5rem 0;
-  animation: fade 1s ease-in-out;
 
   .project-pic {
     width: 100%;
@@ -68,6 +67,37 @@
         &:hover {
           color: #f4e1dd;
         }
+      }
+    }
+  }
+
+  .project-gallery {
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    @include min-media(tablet) {
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+
+    .project-image-wrapper {
+      position: relative;
+      display: grid;
+      color: black;
+      transition: all 1s;
+      &::before {
+        // for apsect ratio
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+        grid-area: 1 / 1 / 2 / 2;
+      }
+
+      img {
+        width: 100%;
+        max-width: 100%;
+        object-fit: cover;
+        grid-area: 1 / 1 / 2 / 2;
       }
     }
   }

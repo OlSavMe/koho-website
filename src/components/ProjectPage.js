@@ -11,7 +11,7 @@ const client = contentful.createClient({
 
 const ProjectPage = () => {
   const { id } = useParams();
-  const [many, setMany] = useState([]);
+  const [allEntries, setAllEntries] = useState([]);
   const [readMore, setReadMore] = useState(false);
 
   const toggleReadMore = () => {
@@ -22,15 +22,15 @@ const ProjectPage = () => {
   useEffect(() => {
     client
       .getEntries()
-      .then((response) => setMany(response.items))
+      .then((response) => setAllEntries(response.items))
       .catch(console.error);
   }, []);
 
-  console.log(many);
+  console.log(allEntries);
 
-  // Filter blog posts
+  // Filter single post by id posts
   const singleData = [];
-  many.filter((single) =>
+  allEntries.filter((single) =>
     single.sys.id === `${id}` ? singleData.push(single) : null
   );
 
@@ -59,7 +59,6 @@ const ProjectPage = () => {
                   </strong>
                 ) : null}
               </span>
-
               <p className={readMore ? "read-more" : "read-less"}>
                 {item.fields.readMore}
               </p>
@@ -71,6 +70,13 @@ const ProjectPage = () => {
                 ) : null}
               </span>
             </div>
+          </section>
+          <section className="project-gallery">
+            {item.fields.projectGallery.map((one, x) => (
+              <div className="project-image-wrapper" key={x}>
+                <img src={one.fields.file.url} alt="card-pic" />
+              </div>
+            ))}
           </section>
         </div>
       ))}

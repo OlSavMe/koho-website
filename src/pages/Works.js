@@ -23,7 +23,7 @@ function Works() {
 
   console.log(entries);
 
-  // Filter blog posts
+  // Filter project page posts
   const projectData = [];
   entries.filter((entry) =>
     entry.sys.contentType.sys.id === "projectPage"
