@@ -4,6 +4,7 @@
 
 .project-page {
   margin: 4.5rem 0;
+  animation: fade 1s ease-in-out;
 
   .project-pic {
     width: 100%;
@@ -43,19 +44,30 @@
       .text-about {
         margin: 1rem 0;
         font-size: 18px;
-
-        > strong {
-          text-decoration: underline;
-        }
       }
       .read-more {
-        display: flex;
+        // display: flex;
         margin: 1rem 0;
         font-size: 18px;
+        height: 100%;
+        opacity: 1;
+        transition: opacity 0.8s ease-in-out;
+        // transition: max-height 0.5s ease-in-out;
       }
 
       .read-less {
-        display: none;
+        height: 0;
+        opacity: 0;
+      }
+
+      span > strong {
+        text-decoration: underline;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        z-index: 100;
+        &:hover {
+          color: #f4e1dd;
+        }
       }
     }
   }

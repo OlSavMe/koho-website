@@ -25,7 +25,7 @@ const Footer = () => {
           <ul className="footer-column">
             <li>Contact us:</li>
             <li>hello@kohocreative.com</li>
-            <li>+358 99 99 99 999</li>
+            <li>+358 99 9999999</li>
           </ul>
           <ul className="footer-column">
             <ul className="some">

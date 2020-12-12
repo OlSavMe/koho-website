@@ -16,7 +16,6 @@ const ProjectPage = () => {
 
   const toggleReadMore = () => {
     setReadMore(!readMore);
-    //     setHeight(unfold ? "0px" : `${details.current.scrollHeight}px`);
   };
 
   // Get all entries
@@ -53,15 +52,24 @@ const ProjectPage = () => {
 
             <div className="project-texts">
               <p className="text-about"> {item.fields.aboutTheProject} </p>
-              <p className="text-about">
+              <span>
                 {item.fields.readMore ? (
-                  <strong onClick={toggleReadMore}>Read more</strong>
+                  <strong onClick={toggleReadMore}>
+                    {readMore ? "" : "Read more"}
+                  </strong>
                 ) : null}
-              </p>
+              </span>
 
               <p className={readMore ? "read-more" : "read-less"}>
                 {item.fields.readMore}
               </p>
+              <span>
+                {item.fields.readMore ? (
+                  <strong onClick={toggleReadMore}>
+                    {readMore ? "Read less" : ""}
+                  </strong>
+                ) : null}
+              </span>
             </div>
           </section>
         </div>
