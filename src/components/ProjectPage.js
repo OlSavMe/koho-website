@@ -13,6 +13,8 @@ const ProjectPage = () => {
   const { id } = useParams();
   const [allEntries, setAllEntries] = useState([]);
   const [readMore, setReadMore] = useState(false);
+  const [lightbox, setLightbox] = useState(false);
+  const [imageToShow, setImageToShow] = useState("");
 
   const toggleReadMore = () => {
     setReadMore(!readMore);
@@ -35,6 +37,17 @@ const ProjectPage = () => {
   );
 
   console.log(singleData);
+
+  const showImage = (image) => {
+    //set imageToShow to be the one that's been clicked on
+    setImageToShow(image);
+    //set lightbox visibility to true
+    setLightbox(true);
+  };
+
+  const hideLightBox = () => {
+    setLightbox(false);
+  };
 
   return (
     <div className="project-page">
@@ -72,14 +85,31 @@ const ProjectPage = () => {
             </div>
           </section>
           <section className="project-gallery">
-            {item.fields.projectGallery.map((one, x) => (
+            {item.fields.projectGallery.map((image, x) => (
               <div className="project-image-wrapper" key={x}>
-                <img src={one.fields.file.url} alt="card-pic" />
+                <img
+                  src={image.fields.file.url}
+                  alt="card-pic"
+                  onClick={() => showImage(image)}
+                />
               </div>
             ))}
           </section>
         </div>
       ))}
+      {lightbox ? (
+        <div id="lightbox" onClick={hideLightBox}>
+          <div className="img-wrapper">
+            <img
+              id="lightbox-img"
+              src={imageToShow.fields.file.url}
+              alt="img-this"
+            />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
