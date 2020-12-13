@@ -14,14 +14,14 @@
   height: 100%;
   width: 100%;
   position: fixed;
-  margin-top: 66.15px;
+  margin-top: 54.97px;
   top: 0;
   left: 0;
   transition: transform 0.7s ease-out;
 
   @include min-media(mobile) {
     transform: translateX(+40%);
-    margin-top: 78.95px;
+    margin-top: 61.36px;
   }
 
   z-index: 101;

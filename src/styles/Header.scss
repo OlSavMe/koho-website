@@ -13,10 +13,10 @@
   top: 0;
   width: 100vw;
   z-index: 1;
-  padding: 0 1rem;
+  padding: 0 1rem 0.3rem;
 
   @include min-media(mobile) {
-    padding: 0.7rem 2rem 0;
+    padding: 0.7rem 2rem 0.5rem;
   }
 
   @include min-media(laptop) {
