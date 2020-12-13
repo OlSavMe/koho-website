@@ -13,14 +13,21 @@
   top: 0;
   width: 100vw;
   z-index: 1;
-  padding: 0.3rem 1rem;
+  padding: 0 1rem;
 
-  @include min-media(tablet) {
-    padding: 0.7rem 1rem;
+  @include min-media(mobile) {
+    padding: 0.7rem 2rem 0;
+  }
+
+  @include min-media(laptop) {
+    padding: 0.7rem 3rem;
   }
 
   .logo {
-    margin: 0.8rem 0;
+    margin: 1.2rem 0 0;
+    @include min-media(mobile) {
+      margin: 0.7rem 0.3rem 0;
+    }
     @include min-media(tablet) {
       margin: 0.1rem 0.3rem;
     }
@@ -34,9 +41,15 @@
     display: block;
     height: 2rem;
     position: absolute;
-    top: 1rem;
+    top: 1.2rem;
     right: 1rem;
     margin: 0;
+
+    @include min-media(mobile) {
+      right: 2rem;
+      top: 1.4rem;
+    }
+
     @include min-media(tablet) {
       display: none;
     }

@@ -20,7 +20,7 @@
     }
 
     .project-caption {
-      margin: 2rem 3rem;
+      margin: 2rem 1.5rem 0;
       font-size: 2rem;
       font-weight: bold;
       text-transform: uppercase;
@@ -32,7 +32,7 @@
     .project-texts {
       display: flex;
       flex-direction: column;
-      margin: 1rem 3rem;
+      margin: 1rem 1.5rem;
       @include min-media(tablet) {
         margin: 3rem 6rem;
       }
