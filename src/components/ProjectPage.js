@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../styles/ProjectPage.scss";
 import { useParams } from "react-router-dom";
+import Gallery from "../components/Gallery";
+// import "font-awesome/css/font-awesome.min.css";
 
 // Contentful delivery API
 const contentful = require("contentful");
@@ -13,8 +15,6 @@ const ProjectPage = () => {
   const { id } = useParams();
   const [allEntries, setAllEntries] = useState([]);
   const [readMore, setReadMore] = useState(false);
-  const [lightbox, setLightbox] = useState(false);
-  const [imageToShow, setImageToShow] = useState("");
 
   const toggleReadMore = () => {
     setReadMore(!readMore);
@@ -37,17 +37,6 @@ const ProjectPage = () => {
   );
 
   console.log(singleData);
-
-  const showImage = (image) => {
-    //set imageToShow to be the one that's been clicked on
-    setImageToShow(image);
-    //set lightbox visibility to true
-    setLightbox(true);
-  };
-
-  const hideLightBox = () => {
-    setLightbox(false);
-  };
 
   return (
     <div className="project-page">
@@ -84,32 +73,9 @@ const ProjectPage = () => {
               </span>
             </div>
           </section>
-          <section className="project-gallery">
-            {item.fields.projectGallery.map((image, x) => (
-              <div className="project-image-wrapper" key={x}>
-                <img
-                  src={image.fields.file.url}
-                  alt="card-pic"
-                  onClick={() => showImage(image)}
-                />
-              </div>
-            ))}
-          </section>
+          <Gallery item={item} />
         </div>
       ))}
-      {lightbox ? (
-        <div id="lightbox" onClick={hideLightBox}>
-          <div className="img-wrapper">
-            <img
-              id="lightbox-img"
-              src={imageToShow.fields.file.url}
-              alt="img-this"
-            />
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
     </div>
   );
 };

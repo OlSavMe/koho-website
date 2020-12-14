@@ -121,6 +121,104 @@
     overflow-y: scroll;
     background-color: rgba(41, 41, 41, 0.8);
 
+    span.right {
+      position: absolute;
+      top: 2rem;
+      right: 1rem;
+      color: #f4e1dd;
+      padding: 0;
+      z-index: 102;
+      font-size: 1rem;
+
+      @include min-media(tablet) {
+        font-size: 1.3rem;
+        top: 2rem;
+        right: 3rem;
+      }
+    }
+
+    .next {
+      position: absolute;
+      color: #f4e1dd;
+      padding: 0;
+      z-index: 102;
+      font-size: 2.7rem;
+      font-weight: 100;
+      right: 0;
+      top: 45%;
+      transform: rotate(90deg);
+
+      @include min-media(mobile) {
+        font-size: 4rem;
+        right: 1rem;
+      }
+    }
+
+    .next:after {
+      content: "";
+      position: absolute;
+      right: -16rem;
+      top: 0rem;
+      width: 400px;
+      height: 5rem;
+      background: transparent;
+
+      @include min-media(mobile) {
+        height: 7rem;
+      }
+      @include min-media(laptop) {
+        height: 21rem;
+      }
+    }
+
+    .prev {
+      position: absolute;
+      color: #f4e1dd;
+      padding: 0;
+      z-index: 102;
+      font-size: 2.7rem;
+      font-weight: 100;
+      left: 0;
+      top: 45%;
+      transform: rotate(-90deg);
+
+      @include min-media(mobile) {
+        font-size: 4rem;
+        left: 1rem;
+      }
+    }
+
+    .prev:after {
+      content: "";
+      position: absolute;
+      left: -15rem;
+      width: 400px;
+      height: 5rem;
+      background: transparent;
+
+      @include min-media(mobile) {
+        height: 7rem;
+      }
+      @include min-media(laptop) {
+        height: 21rem;
+      }
+    }
+
+    // span.left {
+    //   padding: 0;
+    //   position: absolute;
+    //   top: 2rem;
+    //   left: 3rem;
+    //   color: #f4e1dd;
+    //   height: 2rem;
+    //   z-index: 102;
+
+    //   i {
+    //     font-size: 2.5rem;
+    //     font-weight: 100;
+    //   }
+    // }
+
     .img-wrapper {
       position: relative;
       justify-content: center;

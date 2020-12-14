@@ -28,7 +28,7 @@
     .wrapper {
       position: relative;
       display: grid;
-      color: white;
+      color: #ffffff;
       transition: all 1s;
 
       &::before {
@@ -64,6 +64,7 @@
       &:hover figcaption {
         opacity: 1;
         text-align: left;
+        text-shadow: 1px 1px rgba(25, 25, 25, 0.3);
       }
 
       img {
@@ -80,8 +81,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 1.3rem;
-        font-weight: bold;
+        font-size: 1.5rem;
+        // font-weight: bold;
         z-index: 3;
       }
     }
