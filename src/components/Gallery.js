@@ -23,7 +23,7 @@ const Gallery = (props) => {
     e.stopPropagation();
     let currentIndex = images.indexOf(imageToShow);
     if (currentIndex >= images.length - 1) {
-      currentIndex = 0;
+      setLightbox(false);
     } else {
       let nextImage = images[currentIndex + 1];
       setImageToShow(nextImage);
@@ -35,30 +35,12 @@ const Gallery = (props) => {
     e.stopPropagation();
     let currentIndex = images.indexOf(imageToShow);
     if (currentIndex <= 0) {
-      currentIndex = images.length;
+      setLightbox(false);
     } else {
       let nextImage = images[currentIndex - 1];
       setImageToShow(nextImage);
     }
   };
-
-  //   // for navigation with left and right keys
-  //   function moveKeys(e) {
-  //     // if (!e) e = window.event;
-  //     if (e.keyCode === 37) {
-  //       alert("hi!");
-  //     } else if (e.keyCode === 39) {
-  //       alert("hi!");
-  //     }
-  //   }
-
-  // const handleKeyDown = (x) => {
-  //   if (x.keyCode === 37) {
-  //     showPrev();
-  //   } else if (x.keyCode === 39) {
-  //     showNext();
-  //   }
-  // };
 
   return (
     <section className="project-gallery">

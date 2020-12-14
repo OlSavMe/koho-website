@@ -128,7 +128,7 @@
       color: #f4e1dd;
       padding: 0;
       z-index: 102;
-      font-size: 1rem;
+      font-size: 1.1rem;
 
       @include min-media(tablet) {
         font-size: 1.3rem;
@@ -142,7 +142,7 @@
       color: #f4e1dd;
       padding: 0;
       z-index: 102;
-      font-size: 2.7rem;
+      font-size: 3rem;
       font-weight: 100;
       right: 0;
       top: 45%;
@@ -155,6 +155,7 @@
     }
 
     .next:after {
+      display: none;
       content: "";
       position: absolute;
       right: -16rem;
@@ -176,7 +177,7 @@
       color: #f4e1dd;
       padding: 0;
       z-index: 102;
-      font-size: 2.7rem;
+      font-size: 3rem;
       font-weight: 100;
       left: 0;
       top: 45%;
@@ -189,11 +190,12 @@
     }
 
     .prev:after {
+      display: none;
       content: "";
       position: absolute;
       left: -15rem;
       width: 400px;
-      height: 5rem;
+
       background: transparent;
 
       @include min-media(mobile) {
