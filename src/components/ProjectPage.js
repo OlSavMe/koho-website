@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/ProjectPage.scss";
 import { useParams } from "react-router-dom";
 import Gallery from "../components/Gallery";
+import SkeletonWorks from "./SkeletonWorks";
 // import "font-awesome/css/font-awesome.min.css";
 
 // Contentful delivery API
@@ -15,20 +16,31 @@ const ProjectPage = () => {
   const { id } = useParams();
   const [allEntries, setAllEntries] = useState([]);
   const [readMore, setReadMore] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const toggleReadMore = () => {
     setReadMore(!readMore);
   };
 
-  // Get all entries
-  useEffect(() => {
+  const sleep = (milliseconds) => {
+    return new Promise((resolve) => setTimeout(resolve, milliseconds));
+  };
+
+  console.log(allEntries);
+
+  const getEnt = async (milliseconds = 200) => {
+    await sleep(milliseconds);
     client
       .getEntries()
       .then((response) => setAllEntries(response.items))
       .catch(console.error);
-  }, []);
+    setLoading(false);
+  };
 
-  console.log(allEntries);
+  useEffect(() => {
+    setLoading(true);
+    getEnt(); // eslint-disable-next-line
+  }, []);
 
   // Filter single post by id posts
   const singleData = [];
@@ -40,6 +52,7 @@ const ProjectPage = () => {
 
   return (
     <div className="project-page">
+      {loading && <SkeletonWorks />}
       {singleData.map((item, i) => (
         <div className="page-container" key={i}>
           <img

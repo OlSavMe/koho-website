@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/Works.scss";
 import { NavLink, Switch, Route, useRouteMatch } from "react-router-dom";
 import ProjectPage from "../components/ProjectPage";
+import SkeletonWorks from "../components/SkeletonWorks";
 
 // Contentful delivery API
 const contentful = require("contentful");
@@ -13,12 +14,20 @@ const client = contentful.createClient({
 function Works() {
   const [entries, setEntries] = useState([]);
 
-  // Get all entries
-  useEffect(() => {
+  const sleep = (milliseconds) => {
+    return new Promise((resolve) => setTimeout(resolve, milliseconds));
+  };
+
+  const getAll = async (milliseconds = 20) => {
+    await sleep(milliseconds);
     client
       .getEntries()
       .then((response) => setEntries(response.items))
       .catch(console.error);
+  };
+
+  useEffect(() => {
+    getAll(); // eslint-disable-next-line
   }, []);
 
   console.log(entries);
@@ -37,7 +46,11 @@ function Works() {
   const ProjectCards = () =>
     projectData.map((item, index) => (
       <NavLink key={index} to={`/project/${item.sys.id}`} className="wrapper">
-        <img src={item.fields.heroImage.fields.file.url} alt="card-pic" />
+        <img
+          src={item.fields.heroImage.fields.file.url}
+          alt="card-pic"
+          className="inner-pic"
+        />
         <figcaption>{item.fields.projectTitle}</figcaption>
       </NavLink>
     ));

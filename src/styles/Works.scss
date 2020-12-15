@@ -67,7 +67,7 @@
         text-shadow: 1px 1px rgba(25, 25, 25, 0.3);
       }
 
-      img {
+      .inner-pic {
         width: 100%;
         max-width: 100%;
         object-fit: cover;
@@ -81,9 +81,15 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 1.5rem;
-        // font-weight: bold;
+        font-size: 1.2rem;
         z-index: 3;
+
+        @include min-media(tablet) {
+          font-size: 1.3rem;
+        }
+        @include min-media(laptop) {
+          font-size: 1.5rem;
+        }
       }
     }
   }
