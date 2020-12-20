@@ -52,6 +52,12 @@ $breakpoints: (
   }
 }
 
+@mixin landscape {
+  @media only screen and (orientation: landscape) {
+    @content;
+  }
+}
+
 @keyframes fade {
   0% {
     opacity: 0;
