@@ -43,12 +43,12 @@
   }
 
   .menu-footer {
-    position: absolute;
+    position: relative;
     font-size: 1rem;
     line-height: 1rem;
-    bottom: 6rem;
+    bottom: 0;
     left: 2rem;
-    // margin: 5rem 0 0 1.5rem;
+    margin: 5rem 0 0 0;
 
     p {
       color: #cfcfcf;
