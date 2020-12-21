@@ -17,8 +17,8 @@ const App = () => {
       <MobileMenu open={open} setOpen={setOpen} />
       <Switch>
         <Route path="/" exact component={Works} />
-        <Route path="/portfolio" component={About} />
-        <Route path="/edu" component={Contact} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
         <Route path="/project/:id" component={ProjectPage} />
       </Switch>
       <Footer />

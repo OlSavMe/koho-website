@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/Works.scss";
 import { NavLink, Switch, Route, useRouteMatch } from "react-router-dom";
 import ProjectPage from "../components/ProjectPage";
-import SkeletonWorks from "../components/SkeletonWorks";
+// import SkeletonWorks from "../components/SkeletonWorks";
 
 // Contentful delivery API
 const contentful = require("contentful");
