@@ -73,6 +73,17 @@ const Gallery = (props) => {
     setDoubleClick(!doubleClick);
   };
 
+  //function for navigation with left and right buttons
+  const moveKeys = (event) => {
+    const key = event.key;
+    if (key === "ArrowRight") {
+      alert("Hi!");
+      showNext();
+    } else if (key === "ArrowLeft") {
+      showPrev();
+    }
+  };
+
   return (
     <section className="project-gallery">
       {props.item.fields.projectGallery.map((image, x) => (
@@ -93,9 +104,21 @@ const Gallery = (props) => {
             onClick={hideLightBox}
           />
 
-          <img className="next" src={NextArrow} alt="next" onClick={showNext} />
+          <img
+            className="next"
+            src={NextArrow}
+            alt="next"
+            onClick={showNext}
+            onKeyDown={moveKeys}
+          />
 
-          <img className="prev" src={PrevArrow} alt="prev" onClick={showPrev} />
+          <img
+            className="prev"
+            src={PrevArrow}
+            alt="prev"
+            onClick={showPrev}
+            onKeyDown={moveKeys}
+          />
 
           <div
             className={doubleClick ? "img-wrapper-dbc" : "img-wrapper"}

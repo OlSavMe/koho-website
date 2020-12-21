@@ -1,0 +1,94 @@
+@import "./styles.scss";
+
+@include scrollbars;
+
+.contact-container {
+  margin: 54.97px 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include min-media(mobile) {
+    margin: 61.36px 2rem;
+  }
+  @include min-media(laptop) {
+    margin: 3.6rem 3rem;
+  }
+
+  .contact-section {
+    margin: 5rem 2rem 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+
+    @include min-media(laptop) {
+      grid-template-columns: 500px 2fr;
+      grid-column-gap: 3rem;
+      grid-row-gap: 2rem;
+    }
+
+    .contact-item {
+      font-size: 1.2rem;
+    }
+
+    .contact-item:nth-of-type(odd) {
+      min-width: 80%;
+
+      @include min-media(laptop) {
+        min-width: 33%;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 3;
+      }
+
+      .contact-header {
+        font-size: 40px;
+        margin: 0;
+        letter-spacing: -1px;
+
+        @include min-media(mobile) {
+          font-size: 60px;
+        }
+
+        @include min-media(laptop) {
+          margin: 1rem;
+        }
+      }
+    }
+
+    .contact-item:nth-of-type(even) {
+      min-width: 80%;
+
+      @include min-media(laptop) {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+      }
+
+      .inner-item {
+        margin-bottom: 3rem;
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+          margin: 3rem 0 1rem;
+          text-decoration: underline;
+          -webkit-text-decoration-color: #f4e1dd; /* Safari */
+          text-decoration-color: #f4e1dd;
+        }
+        a {
+          font-size: 18px;
+          color: black;
+          margin: 1rem 0;
+
+          @include min-media(mobile) {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}

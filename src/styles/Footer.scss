@@ -10,7 +10,7 @@
   padding: 25px;
 
   @include min-media(tablet) {
-    width: 25%;
+    width: 30%;
   }
 
   li {
@@ -57,7 +57,10 @@ footer {
         li {
           margin-right: 2rem;
           img {
-            height: 2rem;
+            height: 2.5rem;
+            @include min-media(tablet) {
+              height: 3rem;
+            }
           }
         }
       }

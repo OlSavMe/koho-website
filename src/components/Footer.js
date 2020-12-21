@@ -30,12 +30,20 @@ const Footer = () => {
           <ul className="footer-column">
             <ul className="some">
               <li>
-                <a href="https://www.linkedin.com/company/kohocreative/">
+                <a
+                  href="https://www.linkedin.com/company/kohocreative/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img src={LinkedinImg} alt="linkedin" />
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com/kohocreative/">
+                <a
+                  href="https://www.instagram.com/kohocreative/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img src={InstaImg} alt="linkedin" />
                 </a>
               </li>

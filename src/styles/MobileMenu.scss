@@ -8,7 +8,6 @@
   flex-direction: column;
   background-color: black;
   color: #cfcfcf;
-  //   justify-content: center;
   padding-top: 4rem;
   transform: translateX(+30%);
   height: 100%;
@@ -18,13 +17,16 @@
   top: 0;
   left: 0;
   transition: transform 0.7s ease-out;
+  z-index: 101;
 
   @include min-media(mobile) {
     transform: translateX(+40%);
     margin-top: 61.36px;
   }
 
-  z-index: 101;
+  @include landscape {
+    padding-top: 1rem;
+  }
 
   a {
     color: #cfcfcf;
@@ -34,6 +36,10 @@
     letter-spacing: 0.5rem;
     text-decoration: none;
     transition: color 0.3s linear;
+
+    @include landscape {
+      font-size: 1.2rem;
+    }
   }
   .selectedLink {
     border-bottom: 1px solid #cfcfcf;
@@ -46,9 +52,11 @@
     position: relative;
     font-size: 1rem;
     line-height: 1rem;
-    bottom: 0;
+    bottom: -3rem;
     left: 2rem;
-    margin: 5rem 0 0 0;
+    @include landscape {
+      bottom: 0;
+    }
 
     p {
       color: #cfcfcf;
