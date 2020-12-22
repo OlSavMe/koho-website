@@ -3,13 +3,13 @@
 @include scrollbars;
 
 .project-page {
-  margin: 54.97px 0;
+  margin: 54.97px 0 0 0;
 
   @include min-media(mobile) {
     margin: 61.36px 0;
   }
   @include min-media(laptop) {
-    margin: 3.6rem 0;
+    margin: 3.6rem 0 0 0;
   }
 
   .project-pic {
@@ -114,7 +114,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0;
+    padding: 0 !important;
     z-index: 101;
     left: 0;
     top: 0;
@@ -179,7 +179,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      padding: 0 0 0 0;
+      padding: 0 !important;
       width: 100%;
       overflow: scroll;
 
@@ -204,7 +204,7 @@
         object-fit: fill;
       }
 
-      #tooltip-in {
+      .tooltip-in {
         display: none;
         position: absolute;
         top: 50%;
@@ -217,10 +217,39 @@
         transition: opacity 0.5s ease-in-out;
       }
 
-      &:hover #tooltip-in {
+      &:hover .tooltip-in {
         display: none;
         @include min-media(tablet) {
           display: block;
+        }
+      }
+
+      .dots {
+        width: 100%;
+        margin-bottom: 0;
+        position: relative;
+        text-align: center;
+        cursor: default;
+        z-index: 103;
+
+        @include min-media(mobile) {
+          display: none;
+        }
+
+        .dot {
+          width: 7px;
+          height: 7px;
+          margin: 0 4px;
+          position: relative;
+          border-radius: 50%;
+          display: inline-block;
+          background-color: rgba(255, 255, 255, 0.3);
+          transition: 0.4s;
+          cursor: pointer;
+
+          &.active {
+            background: #f4e1dd;
+          }
         }
       }
     }
@@ -232,8 +261,10 @@
         width: 150%;
         height: 100%;
         overflow-y: scroll;
+        padding: 0;
+        box-sizing: content-box;
 
-        #tooltip-in {
+        .tooltip-in {
           display: none;
         }
 

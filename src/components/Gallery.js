@@ -132,7 +132,17 @@ const Gallery = (props) => {
               alt="img-this"
               onDoubleClick={toggleDoubleClick}
             />
-            <span id="tooltip-in">Doubleclick to zoom in / out</span>
+            <span className="tooltip-in">Doubleclick to zoom</span>
+            <div className="dots">
+              {images.map((i, index) => (
+                <span
+                  key={index}
+                  className={
+                    index === images.indexOf(imageToShow) ? "dot active" : "dot"
+                  }
+                ></span>
+              ))}
+            </div>
             {/* <span id="tooltip-out">Doubleclick to zoom out</span> */}
           </div>
         </div>
