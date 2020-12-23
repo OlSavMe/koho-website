@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Close from "../assets/koho_close white.svg";
 import NextArrow from "../assets/koho_next arrow white.svg";
 import PrevArrow from "../assets/koho_previous arrow white.svg";
@@ -44,41 +44,50 @@ const Gallery = (props) => {
   };
 
   //show next image in lightbox
-  const showNext = (e) => {
-    // e.stopPropagation();
-    let currentIndex = images.indexOf(imageToShow);
-    if (currentIndex >= images.length - 1) {
-      setLightbox(false);
-    } else {
-      let nextImage = images[currentIndex + 1];
-      setImageToShow(nextImage);
-    }
-  };
+  const showNext = useCallback(
+    (e) => {
+      // e.stopPropagation();
+      let currentIndex = images.indexOf(imageToShow);
+      if (currentIndex >= images.length - 1) {
+        setLightbox(false);
+      } else {
+        let nextImage = images[currentIndex + 1];
+        setImageToShow(nextImage);
+      }
+    },
+    [images, imageToShow]
+  );
 
   //show previous image in lightbox
-  const showPrev = (e) => {
-    // e.stopPropagation();
-    let currentIndex = images.indexOf(imageToShow);
-    if (currentIndex <= 0) {
-      setLightbox(false);
-    } else {
-      let nextImage = images[currentIndex - 1];
-      setImageToShow(nextImage);
-    }
-  };
+  const showPrev = useCallback(
+    (e) => {
+      // e.stopPropagation();
+      let currentIndex = images.indexOf(imageToShow);
+      if (currentIndex <= 0) {
+        setLightbox(false);
+      } else {
+        let nextImage = images[currentIndex - 1];
+        setImageToShow(nextImage);
+      }
+    },
+    [images, imageToShow]
+  );
 
   const toggleDoubleClick = (e) => {
     setDoubleClick(!doubleClick);
   };
 
-  // const moveKeys = (event) => {
-  //   const key = event.key;
-  //   if (key === "ArrowRight") {
-  //     showNext();
-  //   } else if (key === "ArrowLeft") {
-  //     showPrev();
-  //   }
-  // };
+  const moveKeys = useCallback(
+    (event) => {
+      const key = event.key;
+      if (key === "ArrowRight") {
+        showNext();
+      } else if (key === "ArrowLeft") {
+        showPrev();
+      }
+    },
+    [showNext, showPrev]
+  );
 
   window.addEventListener("keydown", (event, lightbox, doubleClick) => {
     if ((lightbox = true) && (doubleClick = true) && event.keyCode === 27) {
@@ -86,6 +95,14 @@ const Gallery = (props) => {
       console.log(event.keyCode);
     }
   });
+
+  useEffect(() => {
+    window.addEventListener("keydown", moveKeys);
+    // cleanup this component
+    return () => {
+      window.removeEventListener("keydown", moveKeys);
+    };
+  }, [moveKeys]);
 
   return (
     <section className="project-gallery">
