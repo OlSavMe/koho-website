@@ -3,13 +3,13 @@
 @include scrollbars;
 
 .project-page {
-  margin: 54.97px 0 0 0;
+  margin: 54.97px 0;
 
   @include min-media(mobile) {
     margin: 61.36px 0;
   }
   @include min-media(laptop) {
-    margin: 3.6rem 0 0 0;
+    margin: 3.6rem 0;
   }
 
   .project-pic {

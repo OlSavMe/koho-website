@@ -24,12 +24,10 @@ const Gallery = (props) => {
 
   const handleTouchEnd = () => {
     if (touchStart - touchEnd > 70) {
-      // do your stuff here for left swipe
       showNext();
     }
 
     if (touchStart - touchEnd < -70) {
-      // do your stuff here for right swipe
       showPrev();
     }
   };
@@ -73,16 +71,21 @@ const Gallery = (props) => {
     setDoubleClick(!doubleClick);
   };
 
-  //function for navigation with left and right buttons
-  const moveKeys = (event) => {
-    const key = event.key;
-    if (key === "ArrowRight") {
-      alert("Hi!");
-      showNext();
-    } else if (key === "ArrowLeft") {
-      showPrev();
+  // const moveKeys = (event) => {
+  //   const key = event.key;
+  //   if (key === "ArrowRight") {
+  //     showNext();
+  //   } else if (key === "ArrowLeft") {
+  //     showPrev();
+  //   }
+  // };
+
+  window.addEventListener("keydown", (event, lightbox, doubleClick) => {
+    if ((lightbox = true) && (doubleClick = true) && event.keyCode === 27) {
+      setDoubleClick(false);
+      console.log(event.keyCode);
     }
-  };
+  });
 
   return (
     <section className="project-gallery">
@@ -104,21 +107,9 @@ const Gallery = (props) => {
             onClick={hideLightBox}
           />
 
-          <img
-            className="next"
-            src={NextArrow}
-            alt="next"
-            onClick={showNext}
-            onKeyDown={moveKeys}
-          />
+          <img className="next" src={NextArrow} alt="next" onClick={showNext} />
 
-          <img
-            className="prev"
-            src={PrevArrow}
-            alt="prev"
-            onClick={showPrev}
-            onKeyDown={moveKeys}
-          />
+          <img className="prev" src={PrevArrow} alt="prev" onClick={showPrev} />
 
           <div
             className={doubleClick ? "img-wrapper-dbc" : "img-wrapper"}
@@ -143,7 +134,6 @@ const Gallery = (props) => {
                 ></span>
               ))}
             </div>
-            {/* <span id="tooltip-out">Doubleclick to zoom out</span> */}
           </div>
         </div>
       ) : (
