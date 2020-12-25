@@ -134,6 +134,12 @@ const Gallery = (props) => {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
+            <div className="count-wrap">
+              <span id="count">{`${images.indexOf(imageToShow) + 1}/${
+                images.length
+              }`}</span>
+            </div>
+
             <img
               id="lightbox-img"
               src={imageToShow.fields.file.url}
