@@ -274,6 +274,17 @@
     }
 
     .img-wrapper-dbc {
+      .dots {
+        display: none;
+      }
+
+      .count-wrap {
+        display: none;
+      }
+
+      .tooltip-in {
+        display: none;
+      }
       @include min-media(tablet) {
         position: absolute;
         z-index: 105;
@@ -282,10 +293,6 @@
         overflow-y: scroll;
         padding: 0;
         box-sizing: content-box;
-
-        .tooltip-in {
-          display: none;
-        }
 
         #lightbox-img {
           width: 100%;

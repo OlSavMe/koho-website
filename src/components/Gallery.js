@@ -33,7 +33,7 @@ const Gallery = (props) => {
   };
 
   const showImage = (image) => {
-    //set imageToShow to be the one that's been clicked on
+    //set imageToShow to the clicked one
     setImageToShow(image);
     //set lightbox visibility to true
     setLightbox(true);
@@ -43,10 +43,9 @@ const Gallery = (props) => {
     setLightbox(false);
   };
 
-  //show next image in lightbox
+  //to next img
   const showNext = useCallback(
     (e) => {
-      // e.stopPropagation();
       let currentIndex = images.indexOf(imageToShow);
       if (currentIndex >= images.length - 1) {
         setLightbox(false);
@@ -58,10 +57,9 @@ const Gallery = (props) => {
     [images, imageToShow]
   );
 
-  //show previous image in lightbox
+  //to previous img
   const showPrev = useCallback(
     (e) => {
-      // e.stopPropagation();
       let currentIndex = images.indexOf(imageToShow);
       if (currentIndex <= 0) {
         setLightbox(false);
