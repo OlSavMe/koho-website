@@ -67,6 +67,19 @@ const ProjectPage = () => {
 
             <div className="project-texts">
               <p className="text-about"> {item.fields.aboutTheProject} </p>
+              <br />
+              {item.fields.readMore ? null : (
+                <em className="text-link">
+                  Client:{" "}
+                  <a
+                    href={`${item.fields.clientLink}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.fields.projectTitle}
+                  </a>
+                </em>
+              )}
               <span>
                 {item.fields.readMore ? (
                   <strong onClick={toggleReadMore}>
@@ -76,6 +89,18 @@ const ProjectPage = () => {
               </span>
               <p className={readMore ? "read-more" : "read-less"}>
                 {item.fields.readMore}
+                <br />
+                <br />
+                <em className="text-link">
+                  Client:{" "}
+                  <a
+                    href={`${item.fields.clientLink}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.fields.projectTitle}
+                  </a>
+                </em>
               </p>
               <span>
                 {item.fields.readMore ? (

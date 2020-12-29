@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/Contact.scss";
+import { EntriesContext } from "../EntriesContext";
 
 function Contact() {
-  const contactData = [
-    {
-      phone: "+358 99 9999999",
-      email: "hello@kohocreative.com",
-      linkedin: "https://www.linkedin.com/company/kohocreative/",
-      instagram: "https://www.instagram.com/kohocreative/",
-    },
-  ];
+  const { entries } = useContext(EntriesContext);
+
+  // Filter contact page posts
+  const contactData = [];
+  entries.filter((entry) =>
+    entry.sys.contentType.sys.id === "contactData"
+      ? contactData.push(entry)
+      : null
+  );
 
   return (
     <div className="contact-container">
@@ -20,18 +22,18 @@ function Contact() {
         <div className="contact-item">
           {contactData.map((i, index) => (
             <div key={index} className="inner-item">
-              <a href={`tel:+${i.phone}`}>{i.phone}</a>
-              <a href={`mailto:${i.email}`}>{i.email}</a>
+              <a href={`tel:+${i.fields.phone}`}>{i.fields.phone}</a>
+              <a href={`mailto:${i.fields.email}`}>{i.fields.email}</a>
               <h3>Social Media</h3>
               <a
-                href={`${i.linkedin}`}
+                href={`${i.fields.linkedinUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 LinkedIn
               </a>
               <a
-                href={`${i.instagram}`}
+                href={`${i.fields.instagramUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >

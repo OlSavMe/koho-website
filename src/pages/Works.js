@@ -1,34 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "../styles/Works.scss";
 import { NavLink, Switch, Route, useRouteMatch } from "react-router-dom";
 import ProjectPage from "../components/ProjectPage";
+import { EntriesContext } from "../EntriesContext";
 // import SkeletonWorks from "../components/SkeletonWorks";
 
-// Contentful delivery API
-const contentful = require("contentful");
-const client = contentful.createClient({
-  space: process.env.REACT_APP_SPACE_ID,
-  accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
-});
-
-function Works() {
-  const [entries, setEntries] = useState([]);
-
-  const sleep = (milliseconds) => {
-    return new Promise((resolve) => setTimeout(resolve, milliseconds));
-  };
-
-  const getAll = async (milliseconds = 20) => {
-    await sleep(milliseconds);
-    client
-      .getEntries()
-      .then((response) => setEntries(response.items))
-      .catch(console.error);
-  };
-
-  useEffect(() => {
-    getAll(); // eslint-disable-next-line
-  }, []);
+const Works = () => {
+  const { entries } = useContext(EntriesContext);
 
   console.log(entries);
 
@@ -69,6 +47,6 @@ function Works() {
       </Switch>
     </>
   );
-}
+};
 
 export default Works;

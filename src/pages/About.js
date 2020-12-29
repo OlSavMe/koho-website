@@ -1,78 +1,77 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/About.scss";
+import { EntriesContext } from "../EntriesContext";
 
 function About() {
-  const aboutData = [
-    {
-      section: "About us",
-      content: [
-        {
-          name: "",
-          desc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-        },
-      ],
-    },
-    {
-      section: "Services",
-      content: [
-        {
-          name: "Marketing design",
-          desc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-        },
-        {
-          name: "Branding",
-          desc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-        },
-        {
-          name: "Viual Communication",
-          desc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-        },
-      ],
-    },
-    {
-      section: "Why us?",
-      content: [
-        {
-          name: "Reason 1",
-          desc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-        },
-        {
-          name: "Reason 2",
-          desc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-        },
-        {
-          name: "Reason 3",
-          desc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-        },
-      ],
-    },
-  ];
+  const { entries } = useContext(EntriesContext);
+
+  // Filter about section posts
+  const aboutData = [];
+  entries.filter((entry) =>
+    entry.sys.contentType.sys.id === "about" ? aboutData.push(entry) : null
+  );
+
+  console.log(aboutData);
+
+  // Filter services section posts
+  const servicesData = [];
+  entries.filter((entry) =>
+    entry.sys.contentType.sys.id === "services"
+      ? servicesData.push(entry)
+      : null
+  );
+
+  console.log(servicesData);
+
+  // Filter services section posts
+  const reasonsData = [];
+  entries.filter((entry) =>
+    entry.sys.contentType.sys.id === "reason" ? reasonsData.push(entry) : null
+  );
+
+  console.log(reasonsData);
 
   return (
     <>
       <div className="about-container">
-        {aboutData.map((i, index) => (
-          <section className="about-section" key={index}>
-            <div className="about-item">
-              <h2 className="about-header">{i.section}</h2>
-            </div>
-            <div className="about-item">
-              {i.content.map((x, ind) => (
-                <div key={ind} className="inner-item">
-                  <h3>{x.name}</h3>
-                  <p>{x.desc}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
+        <section className="about-section">
+          <div className="about-item">
+            <h2 className="about-header">About</h2>
+          </div>
+          <div className="about-item">
+            {aboutData.map((i, index) => (
+              <div className="inner-item" key={index}>
+                {i.fields.aboutText}
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="about-section">
+          <div className="about-item">
+            <h2 className="about-header">Services</h2>
+          </div>
+          <div className="about-item">
+            {servicesData.map((i, index) => (
+              <div className="inner-item" key={index}>
+                <h3> {i.fields.serviceName}</h3>
+                <p> {i.fields.serviceType}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="about-section">
+          <div className="about-item">
+            <h2 className="about-header">Why Us?</h2>
+          </div>
+          <div className="about-item">
+            {reasonsData.map((i, index) => (
+              <div className="inner-item" key={index}>
+                <h3> {i.fields.reasonName}</h3>
+                <p> {i.fields.reasonText}</p>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </>
   );
