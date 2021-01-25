@@ -28,8 +28,6 @@ const EntriesProvider = (props) => {
     getAll(); // eslint-disable-next-line
   }, []);
 
-  console.log(entries);
-
   return (
     <EntriesContext.Provider value={{ entries }}>
       {props.children}

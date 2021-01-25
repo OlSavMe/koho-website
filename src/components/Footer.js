@@ -78,11 +78,11 @@ const Footer = () => {
         </section>
         <section className="footer-copyright">
           <ul className="footer-column">
-            <li>kohocreative.com © 2020</li>
+            <li>kohocreative.com © 2021</li>
             <li>
               Website created by{" "}
               <a
-                href="https://savkaportfolio.firebaseapp.com/"
+                href="https://savkao.com/"
                 target="_blank"
                 rel="noopener noreferrer"
               >

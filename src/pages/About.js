@@ -11,8 +11,6 @@ function About() {
     entry.sys.contentType.sys.id === "about" ? aboutData.push(entry) : null
   );
 
-  console.log(aboutData);
-
   // Filter services section posts
   const servicesData = [];
   entries.filter((entry) =>
@@ -21,15 +19,11 @@ function About() {
       : null
   );
 
-  console.log(servicesData);
-
   // Filter services section posts
   const reasonsData = [];
   entries.filter((entry) =>
     entry.sys.contentType.sys.id === "reason" ? reasonsData.push(entry) : null
   );
-
-  console.log(reasonsData);
 
   return (
     <>

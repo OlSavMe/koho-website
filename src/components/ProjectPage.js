@@ -3,7 +3,6 @@ import "../styles/ProjectPage.scss";
 import { useParams } from "react-router-dom";
 import Gallery from "../components/Gallery";
 import SkeletonWorks from "./SkeletonWorks";
-// import "font-awesome/css/font-awesome.min.css";
 
 // Contentful delivery API
 const contentful = require("contentful");
@@ -26,8 +25,6 @@ const ProjectPage = () => {
     return new Promise((resolve) => setTimeout(resolve, milliseconds));
   };
 
-  console.log(allEntries);
-
   const getEnt = async (milliseconds = 200) => {
     await sleep(milliseconds);
     client
@@ -47,8 +44,6 @@ const ProjectPage = () => {
   allEntries.filter((single) =>
     single.sys.id === `${id}` ? singleData.push(single) : null
   );
-
-  console.log(singleData);
 
   return (
     <div className="project-page">

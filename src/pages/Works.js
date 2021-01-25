@@ -1,14 +1,10 @@
 import React, { useContext } from "react";
 import "../styles/Works.scss";
-import { NavLink, Switch, Route, useRouteMatch } from "react-router-dom";
-import ProjectPage from "../components/ProjectPage";
+import { NavLink } from "react-router-dom";
 import { EntriesContext } from "../EntriesContext";
-// import SkeletonWorks from "../components/SkeletonWorks";
 
 const Works = () => {
   const { entries } = useContext(EntriesContext);
-
-  console.log(entries);
 
   // Filter project page posts
   const projectData = [];
@@ -18,9 +14,6 @@ const Works = () => {
       : null
   );
 
-  console.log(projectData);
-
-  let { url } = useRouteMatch();
   const ProjectCards = () =>
     projectData.map((item, index) => (
       <NavLink key={index} to={`/project/${item.sys.id}`} className="wrapper">
@@ -40,11 +33,6 @@ const Works = () => {
           <ProjectCards />
         </div>
       </div>
-      <Switch>
-        <Route path={`${url}/:id`}>
-          <ProjectPage />
-        </Route>
-      </Switch>
     </>
   );
 };

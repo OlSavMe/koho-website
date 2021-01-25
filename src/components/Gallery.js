@@ -5,7 +5,6 @@ import PrevArrow from "../assets/koho_previous arrow white.svg";
 
 const Gallery = (props) => {
   const images = props.item.fields.projectGallery;
-  console.log(images.length);
 
   const [lightbox, setLightbox] = useState(false);
   const [imageToShow, setImageToShow] = useState("");
@@ -14,6 +13,7 @@ const Gallery = (props) => {
   const [touchStart, setTouchStart] = React.useState(0);
   const [touchEnd, setTouchEnd] = React.useState(0);
 
+  // enabling swiping in mobile version
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
@@ -48,10 +48,9 @@ const Gallery = (props) => {
     (e) => {
       let currentIndex = images.indexOf(imageToShow);
       if (currentIndex >= images.length - 1) {
-        setLightbox(false);
+        setImageToShow(images[0]);
       } else {
-        let nextImage = images[currentIndex + 1];
-        setImageToShow(nextImage);
+        setImageToShow(images[currentIndex + 1]);
       }
     },
     [images, imageToShow]
@@ -62,10 +61,9 @@ const Gallery = (props) => {
     (e) => {
       let currentIndex = images.indexOf(imageToShow);
       if (currentIndex <= 0) {
-        setLightbox(false);
+        setImageToShow(images[images.length - 1]);
       } else {
-        let nextImage = images[currentIndex - 1];
-        setImageToShow(nextImage);
+        setImageToShow(images[currentIndex - 1]);
       }
     },
     [images, imageToShow]
@@ -90,7 +88,6 @@ const Gallery = (props) => {
   window.addEventListener("keydown", (event, lightbox, doubleClick) => {
     if ((lightbox = true) && (doubleClick = true) && event.keyCode === 27) {
       setDoubleClick(false);
-      console.log(event.keyCode);
     }
   });
 
